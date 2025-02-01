@@ -25,7 +25,7 @@ jobs:
         run: pytest --alluredir=allure-results-job1
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-job1
           path: allure-results-job1
@@ -49,7 +49,7 @@ jobs:
         run: pytest --alluredir=allure-results-job2
 
       - name: Upload Allure results
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results-job2
           path: allure-results-job2
@@ -64,13 +64,13 @@ jobs:
         run: mkdir -p merged-allure-results
 
       - name: Download Allure results from Job 1
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: allure-results-job1
           path: merged-allure-results
 
       - name: Download Allure results from Job 2
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4
         with:
           name: allure-results-job2
           path: merged-allure-results
