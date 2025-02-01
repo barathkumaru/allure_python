@@ -1,3 +1,2 @@
 pytest
 allure-pytest
-pytest-allure-adaptor
