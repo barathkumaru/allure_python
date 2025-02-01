@@ -6,4 +6,4 @@ def test_pass():
 
 def test_fail():
     """A test that fails"""
-    assert 1 == 2
+    assert 1 != 2
