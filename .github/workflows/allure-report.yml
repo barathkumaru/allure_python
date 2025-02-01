@@ -1,93 +1,93 @@
-name: Allure Report Deployment
+# name: Allure Report Deployment
 
-on:
-  push:
-    branches:
-      - main  # Change as needed
+# on:
+#   push:
+#     branches:
+#       - main  # Change as needed
 
-jobs:
-  test-job-1:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+# jobs:
+#   test-job-1:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.9'
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt  # Ensure allure-pytest is in requirements
+#       - name: Install Dependencies
+#         run: |
+#           pip install -r requirements.txt  # Ensure allure-pytest is in requirements
 
-      - name: Run Tests
-        run: |
-          pytest --alluredir=allure-results
+#       - name: Run Tests
+#         run: |
+#           pytest --alluredir=allure-results
 
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-job1
-          path: allure-results
+#       - name: Upload Allure Results
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: allure-results-job1
+#           path: allure-results
 
-  test-job-2:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+#   test-job-2:
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
 
-      - name: Set up Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.9'
+#       - name: Set up Python
+#         uses: actions/setup-python@v4
+#         with:
+#           python-version: '3.9'
 
-      - name: Install Dependencies
-        run: |
-          pip install -r requirements.txt
+#       - name: Install Dependencies
+#         run: |
+#           pip install -r requirements.txt
 
-      - name: Run Tests
-        run: |
-          pytest --alluredir=allure-results
+#       - name: Run Tests
+#         run: |
+#           pytest --alluredir=allure-results
 
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
-        with:
-          name: allure-results-job2
-          path: allure-results
+#       - name: Upload Allure Results
+#         uses: actions/upload-artifact@v4
+#         with:
+#           name: allure-results-job2
+#           path: allure-results
 
-  generate-and-deploy:
-    needs: [test-job-1, test-job-2]
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+#   generate-and-deploy:
+#     needs: [test-job-1, test-job-2]
+#     runs-on: ubuntu-latest
+#     steps:
+#       - name: Checkout Code
+#         uses: actions/checkout@v4
 
-      - name: Download Allure Results from Job 1
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results-job1
-          path: merged-allure-results
+#       - name: Download Allure Results from Job 1
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: allure-results-job1
+#           path: merged-allure-results
 
-      - name: Download Allure Results from Job 2
-        uses: actions/download-artifact@v4
-        with:
-          name: allure-results-job2
-          path: merged-allure-results
+#       - name: Download Allure Results from Job 2
+#         uses: actions/download-artifact@v4
+#         with:
+#           name: allure-results-job2
+#           path: merged-allure-results
 
-      - name: Set up Allure
-        run: |
-          curl -o allure-2.21.0.tgz -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.tgz
-          tar -zxvf allure-2.21.0.tgz
-          echo "$(pwd)/allure-2.21.0/bin" >> $GITHUB_PATH
+#       - name: Set up Allure
+#         run: |
+#           curl -o allure-2.21.0.tgz -L https://github.com/allure-framework/allure2/releases/download/2.21.0/allure-2.21.0.tgz
+#           tar -zxvf allure-2.21.0.tgz
+#           echo "$(pwd)/allure-2.21.0/bin" >> $GITHUB_PATH
 
-      - name: Generate Allure Report
-        run: |
-          allure generate merged-allure-results -o allure-report --clean
+#       - name: Generate Allure Report
+#         run: |
+#           allure generate merged-allure-results -o allure-report --clean
 
-      - name: Deploy to GitHub Pages
-        uses: JamesIves/github-pages-deploy-action@v4
-        with:
-          branch: gh-pages
-          folder: allure-report
-          clean: true
+#       - name: Deploy to GitHub Pages
+#         uses: JamesIves/github-pages-deploy-action@v4
+#         with:
+#           branch: gh-pages
+#           folder: allure-report
+#           clean: true
