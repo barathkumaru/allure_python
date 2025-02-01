@@ -1,0 +1,53 @@
+{
+  "uid" : "43e3374a44eabc1b",
+  "name" : "test_list",
+  "fullName" : "tests.test_example2#test_list",
+  "historyId" : "184fd7f0e201fe65410b6390215b14c5",
+  "time" : {
+    "start" : 1738430812803,
+    "stop" : 1738430812803,
+    "duration" : 0
+  },
+  "description" : "Check if list elements match",
+  "descriptionHtml" : "<p>Check if list elements match</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_example2"
+  }, {
+    "name" : "host",
+    "value" : "fv-az1672-261"
+  }, {
+    "name" : "thread",
+    "value" : "1917-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_example2"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : true,
+  "retry" : true,
+  "extra" : {
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "43e3374a44eabc1b.json",
+  "parameterValues" : [ ]
+}

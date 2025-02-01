@@ -1,0 +1,63 @@
+{
+  "uid" : "36c53fe302fda94f",
+  "name" : "test_pass",
+  "fullName" : "tests.test_example1#test_pass",
+  "historyId" : "b38a5ce36405895ff29df42f261be577",
+  "time" : {
+    "start" : 1738430816636,
+    "stop" : 1738430816636,
+    "duration" : 0
+  },
+  "description" : "A test that always passes",
+  "descriptionHtml" : "<p>A test that always passes</p>\n",
+  "status" : "passed",
+  "flaky" : false,
+  "newFailed" : false,
+  "beforeStages" : [ ],
+  "afterStages" : [ ],
+  "labels" : [ {
+    "name" : "parentSuite",
+    "value" : "tests"
+  }, {
+    "name" : "suite",
+    "value" : "test_example1"
+  }, {
+    "name" : "host",
+    "value" : "fv-az1665-783"
+  }, {
+    "name" : "thread",
+    "value" : "1908-MainThread"
+  }, {
+    "name" : "framework",
+    "value" : "pytest"
+  }, {
+    "name" : "language",
+    "value" : "cpython3"
+  }, {
+    "name" : "package",
+    "value" : "tests.test_example1"
+  }, {
+    "name" : "resultFormat",
+    "value" : "allure2"
+  } ],
+  "parameters" : [ ],
+  "links" : [ ],
+  "hidden" : false,
+  "retry" : false,
+  "extra" : {
+    "severity" : "normal",
+    "retries" : [ {
+      "uid" : "b1d49b45269188d7",
+      "status" : "passed",
+      "time" : {
+        "start" : 1738430812799,
+        "stop" : 1738430812799,
+        "duration" : 0
+      }
+    } ],
+    "categories" : [ ],
+    "tags" : [ ]
+  },
+  "source" : "36c53fe302fda94f.json",
+  "parameterValues" : [ ]
+}

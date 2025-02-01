@@ -1,0 +1,82 @@
+{
+  "c15ebf34292c198eeb43c30a5de0022b" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "36b0189623f8cfca",
+      "reportUrl" : "https://barathkumaru.github.io/allure_python/8/#testresult/36b0189623f8cfca",
+      "status" : "passed",
+      "time" : {
+        "start" : 1738430816644,
+        "stop" : 1738430816645,
+        "duration" : 1
+      }
+    } ]
+  },
+  "b38a5ce36405895ff29df42f261be577" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "36c53fe302fda94f",
+      "reportUrl" : "https://barathkumaru.github.io/allure_python/8/#testresult/36c53fe302fda94f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1738430816636,
+        "stop" : 1738430816636,
+        "duration" : 0
+      }
+    } ]
+  },
+  "184fd7f0e201fe65410b6390215b14c5" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "83869f844eebd27f",
+      "reportUrl" : "https://barathkumaru.github.io/allure_python/8/#testresult/83869f844eebd27f",
+      "status" : "passed",
+      "time" : {
+        "start" : 1738430816647,
+        "stop" : 1738430816647,
+        "duration" : 0
+      }
+    } ]
+  },
+  "8415936d5f54cb7cfc235edf13c6e8b0" : {
+    "statistic" : {
+      "failed" : 0,
+      "broken" : 0,
+      "skipped" : 0,
+      "passed" : 1,
+      "unknown" : 0,
+      "total" : 1
+    },
+    "items" : [ {
+      "uid" : "fa151f4ce0ed48e3",
+      "reportUrl" : "https://barathkumaru.github.io/allure_python/8/#testresult/fa151f4ce0ed48e3",
+      "status" : "passed",
+      "time" : {
+        "start" : 1738430816646,
+        "stop" : 1738430816646,
+        "duration" : 0
+      }
+    } ]
+  }
+}
