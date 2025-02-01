@@ -1,93 +1,92 @@
-name: Allure Report Deployment
+name: Run Tests and Deploy Allure Report
 
 on:
   push:
     branches:
-      - main  # Change as needed
+      - main
 
 jobs:
-  test-job-1:
+  test1:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install allure-pytest
 
-      - name: Run Tests with Allure
-        run: |
-          pytest --alluredir=allure-results
+      - name: Run tests for Job 1
+        run: pytest --alluredir=allure-results-job1
 
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v3
         with:
           name: allure-results-job1
-          path: allure-results
+          path: allure-results-job1
 
-  test-job-2:
+  test2:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.9'
+          python-version: "3.9"
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
+          pip install allure-pytest
 
-      - name: Run Tests with Allure
-        run: |
-          pytest --alluredir=allure-results
+      - name: Run tests for Job 2
+        run: pytest --alluredir=allure-results-job2
 
-      - name: Upload Allure Results
-        uses: actions/upload-artifact@v4
+      - name: Upload Allure results
+        uses: actions/upload-artifact@v3
         with:
           name: allure-results-job2
-          path: allure-results
+          path: allure-results-job2
 
-  generate-and-deploy:
-    needs: [test-job-1, test-job-2]
+  merge-and-deploy:
+    needs: [test1, test2]  # Ensures both test jobs finish first
     runs-on: ubuntu-latest
-    permissions:
-      contents: write  # Required for GitHub Pages deployment
-
     steps:
-      - name: Checkout Code
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v3
 
-      - name: Download Allure Results from Job 1
-        uses: actions/download-artifact@v4
+      - name: Create merged-allure-results directory
+        run: mkdir -p merged-allure-results
+
+      - name: Download Allure results from Job 1
+        uses: actions/download-artifact@v3
         with:
           name: allure-results-job1
           path: merged-allure-results
 
-      - name: Download Allure Results from Job 2
-        uses: actions/download-artifact@v4
+      - name: Download Allure results from Job 2
+        uses: actions/download-artifact@v3
         with:
           name: allure-results-job2
           path: merged-allure-results
+
+      - name: Verify merged-allure-results directory
+        run: ls -R merged-allure-results  # Debugging step to check if results exist
 
       - name: Generate Allure Report
         uses: simple-elf/allure-report-action@v1
         with:
-          results-dir: merged-allure-results
-          report-dir: allure-report
+          allure_results: merged-allure-results
+          allure_history: allure-history
+          keep_reports: 10
 
-      - name: Deploy to GitHub Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy Allure Report to GitHub Pages
+        uses: peaceiris/actions-gh-pages@v3
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: allure-report
-          publish_branch: gh-pages
-          force_orphan: true  # Clears old files to prevent conflicts
+          publish_dir: allure-history
